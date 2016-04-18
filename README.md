@@ -1,0 +1,2 @@
+# SimplePing
+Am I online?
