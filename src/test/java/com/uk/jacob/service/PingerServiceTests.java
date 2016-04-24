@@ -4,31 +4,34 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.uk.jacob.model.Ping;
+import com.uk.jacob.SimplePingApplication;
+import com.uk.jacob.model.Website;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = PingerService.class)
+@SpringApplicationConfiguration(classes = SimplePingApplication.class)
 @WebAppConfiguration
 public class PingerServiceTests {
 	
+	@Autowired
+	PingerService pingerService;
+	
 	@Test
 	public void testPingerServiceReturnsOkWhenServiceIsUp(){
-		PingerService pingerService = new PingerService();
-		Ping ping = pingerService.ping("http://devnews.today");
+		Website website = pingerService.ping("http://devnews.today");
 		
-		assertEquals(true, ping.ok);
+		assertEquals(true, website.ok);
 	}
 	
 	@Test
 	public void testPingerServiceReturnsOkWhenServiceIsDown(){
-		PingerService pingerService = new PingerService();
-		Ping ping = pingerService.ping("https://jacob.uk.comz");
-		
-		assertEquals(false, ping.ok);
+		Website website = pingerService.ping("https://jacob.uk.comz");
+
+		assertEquals(false, website.ok);
 	}
 
 }

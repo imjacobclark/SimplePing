@@ -1,44 +1,33 @@
 package com.uk.jacob.service;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 
-import com.uk.jacob.model.Ping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.uk.jacob.adapter.HttpAdapter;
+import com.uk.jacob.model.Website;
+
+@Component
 public class PingerService {
+	
+	@Autowired
+	HttpAdapter httpAdapter;
+	
+	@Autowired
+	Website website;
 
-	public Ping ping(String urlToPing) {
-		Ping ping = new Ping();
-		
+	public Website ping(String urlToPing) {		
 		try {
-			HttpURLConnection connection = getConnectionHandler(urlToPing);
+			HttpURLConnection connection = httpAdapter.createHttpURLConnection(urlToPing);
 
-			if(connectionIsOk(connection)){
-				ping.ok = true;
+			if(connection.getResponseCode() == 200){
+				website.ok = true;
 			}
 		} catch (Exception e) {
-			ping.ok = false;
+			website.ok = false;
 		}
 		
-		return ping;
+		return website;
 	}
-
-	private boolean connectionIsOk(HttpURLConnection connection) throws IOException {
-		return connection.getResponseCode() == 200;
-	}
-
-	private HttpURLConnection getConnectionHandler(String urlToPing) throws MalformedURLException, IOException, ProtocolException {
-		URL url = new URL(urlToPing);
-		HttpURLConnection connection = (HttpURLConnection)
-				
-		url.openConnection();
-		connection.setRequestMethod("GET");
-		connection.connect();
-		
-		return connection;
-	}
-
 }
