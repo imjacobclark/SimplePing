@@ -47,8 +47,10 @@ public class PingerServiceTests {
         Mockito.when(httpAdapter.createHttpURLConnection("https://jacob.uk.com")).thenReturn(mockHttpURLConnection);
 
         Website website = pingerService.ping("https://jacob.uk.com");
-
-        assertEquals(true, website.ok);
+        
+        assertEquals("https://jacob.uk.com", website.url);
+        assertEquals(true, website.response);
+        assertEquals(200, website.responseCode);
     }
 
     @Test
@@ -57,8 +59,10 @@ public class PingerServiceTests {
         Mockito.when(httpAdapter.createHttpURLConnection("https://jacob.uk.com")).thenReturn(mockHttpURLConnection);
 
         Website website = pingerService.ping("https://jacob.uk.com");
-
-        assertEquals(false, website.ok);
+        
+        assertEquals("https://jacob.uk.com", website.url);
+        assertEquals(true, website.response);
+        assertEquals(404, website.responseCode);
     }
 
     @Test
@@ -68,7 +72,9 @@ public class PingerServiceTests {
 
         Website website = pingerService.ping("https://jacob.uk.com");
 
-        assertEquals(false, website.ok);
+        assertEquals("https://jacob.uk.com", website.url);
+        assertEquals(false, website.response);
+        assertEquals(0, website.responseCode);
     }
 
 }

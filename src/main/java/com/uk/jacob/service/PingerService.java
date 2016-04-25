@@ -17,17 +17,17 @@ public class PingerService {
 	@Autowired
 	Website website;
 
-	public Website ping(String urlToPing) {		
+	public Website ping(String urlToPing) {	
+		website.url = urlToPing;
+		website.responseCode = 0;
+
 		try {
 			HttpURLConnection connection = httpAdapter.createHttpURLConnection(urlToPing);
 
-			if(connection.getResponseCode() == 200){
-				website.ok = true;
-			}else{
-				website.ok = false;
-			}
+			website.response = true;
+			website.responseCode = connection.getResponseCode();
 		} catch (Exception e) {
-			website.ok = false;
+			website.response = false;
 		}
 		
 		return website;
