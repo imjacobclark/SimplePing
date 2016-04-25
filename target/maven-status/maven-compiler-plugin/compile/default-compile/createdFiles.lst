@@ -1,5 +1,6 @@
-com/uk/jacob/adapter/HttpAdapter.class
 com/uk/jacob/SimplePingApplication.class
+com/uk/jacob/controller/PingController.class
 com/uk/jacob/model/Website.class
 com/uk/jacob/service/PingerService.class
+com/uk/jacob/adapter/HttpAdapter.class
 com/uk/jacob/ServletInitializer.class
