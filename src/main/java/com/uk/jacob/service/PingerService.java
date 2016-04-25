@@ -23,6 +23,8 @@ public class PingerService {
 
 			if(connection.getResponseCode() == 200){
 				website.ok = true;
+			}else{
+				website.ok = false;
 			}
 		} catch (Exception e) {
 			website.ok = false;
