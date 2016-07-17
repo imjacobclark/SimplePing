@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("prototype")
-public class Website {
+public class WebsiteResponseModel {
 	public String url;
 	public boolean response;
 	public int responseCode = 0;

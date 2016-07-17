@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.uk.jacob.adapter.HttpAdapter;
-import com.uk.jacob.model.Website;
+import com.uk.jacob.model.WebsiteResponseModel;
 
 @Component
 public class PingerService {
@@ -15,9 +15,9 @@ public class PingerService {
 	HttpAdapter httpAdapter;
 	
 	@Autowired
-	Website website;
+	WebsiteResponseModel website;
 
-	public Website ping(String urlToPing) {	
+	public WebsiteResponseModel ping(String urlToPing) {	
 		website.url = urlToPing;
 		website.responseCode = 0;
 

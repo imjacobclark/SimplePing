@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uk.jacob.model.Ping;
-import com.uk.jacob.model.Website;
+import com.uk.jacob.model.WebsiteResponseModel;
 import com.uk.jacob.service.PingerService;
 
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("api/v1/ping")
 public class PingController {
 	
 	@Autowired
 	PingerService pingerService;
 
-	@RequestMapping(value = "ping", method = RequestMethod.POST)
-	public Website getPing(@RequestBody Ping ping){
+	@RequestMapping(value = "fire", method = RequestMethod.POST)
+	public WebsiteResponseModel getPing(@RequestBody Ping ping){
 		return pingerService.ping(ping.getHost());
 	}
 }
