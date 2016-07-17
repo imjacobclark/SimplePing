@@ -26,8 +26,9 @@ public class PingerService {
 
 			website.response = true;
 			website.responseCode = connection.getResponseCode();
-		} catch (Exception e) {
+		} catch (Exception exceptionMessage) {
 			website.response = false;
+			website.message = exceptionMessage.getMessage();
 		}
 		
 		return website;

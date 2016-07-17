@@ -9,4 +9,5 @@ public class Website {
 	public String url;
 	public boolean response;
 	public int responseCode = 0;
+	public String message;
 }
