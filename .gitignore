@@ -13,3 +13,14 @@ hs_err_pid*
 
 target
 target/*
+
+
+.idea/
+.mvn/
+.settings/
+.project
+.classpath
+mvnw
+*.iml
+
+
