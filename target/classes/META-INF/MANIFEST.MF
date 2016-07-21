@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: simple_ping
-Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: jacobclark
-Implementation-Vendor-Id: com.uk.jacob
-Build-Jdk: 1.8.0_91
-Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
-
