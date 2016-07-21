@@ -19,7 +19,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.uk.jacob.SimplePingApplication;
 import com.uk.jacob.adapter.HttpAdapter;
-import com.uk.jacob.model.WebsiteResponseModel;
+import com.uk.jacob.model.PingResponse;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SimplePingApplication.class)
@@ -46,7 +46,7 @@ public class PingerServiceTests {
     	Mockito.when(mockHttpURLConnection.getResponseCode()).thenReturn(200);
         Mockito.when(httpAdapter.createHttpURLConnection("https://jacob.uk.com")).thenReturn(mockHttpURLConnection);
 
-        WebsiteResponseModel website = pingerService.ping("https://jacob.uk.com");
+        PingResponse website = pingerService.ping("https://jacob.uk.com");
         
         assertEquals("https://jacob.uk.com", website.url);
         assertEquals(true, website.response);
@@ -58,7 +58,7 @@ public class PingerServiceTests {
         Mockito.when(mockHttpURLConnection.getResponseCode()).thenReturn(404);
         Mockito.when(httpAdapter.createHttpURLConnection("https://jacob.uk.com")).thenReturn(mockHttpURLConnection);
 
-        WebsiteResponseModel website = pingerService.ping("https://jacob.uk.com");
+        PingResponse website = pingerService.ping("https://jacob.uk.com");
         
         assertEquals("https://jacob.uk.com", website.url);
         assertEquals(true, website.response);
@@ -70,7 +70,7 @@ public class PingerServiceTests {
     	Mockito.when(mockHttpURLConnection.getResponseCode()).thenReturn(404);
         Mockito.when(httpAdapter.createHttpURLConnection("http://devnews.today")).thenThrow(new IOException());
 
-        WebsiteResponseModel website = pingerService.ping("https://jacob.uk.com");
+        PingResponse website = pingerService.ping("https://jacob.uk.com");
 
         assertEquals("https://jacob.uk.com", website.url);
         assertEquals(false, website.response);

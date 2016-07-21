@@ -1,6 +1,6 @@
 package com.uk.jacob.model;
 
-public class Ping {
+public class PingRequest {
 	private String host;
 
 	public String getHost() {
