@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.uk.jacob.document.Account;
+import com.uk.jacob.model.Account;
 import com.uk.jacob.repository.AccountRepository;
 
 @RestController

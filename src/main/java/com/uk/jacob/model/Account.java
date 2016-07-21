@@ -1,4 +1,4 @@
-package com.uk.jacob.document;
+package com.uk.jacob.model;
 
 import java.util.ArrayList;
 
